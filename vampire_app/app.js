@@ -154,19 +154,50 @@ mongoose.connection.on("error", () => {
 // });
 
 
-Vampire.find({victims: {$gt: 150} && {$lt: 500}}, (err, foundVampire) => {
+// Vampire.find({victims: {$gt: 150} && {$lt: 500}}, (err, foundVampire) => {
+//     if(err){
+//         console.log(err);
+//     } else {
+//      console.log(foundVampire);
+//     }
+// });
+
+
+/////////////////////////////////////////////////
+// ### Select by exists or does not exist
+
+// Vampire.find({title: {$exists: true}}, (err, foundVampire) => {
+//     if(err){
+//         console.log(err);
+//     } else {
+//      console.log(foundVampire);
+//     }
+// });
+
+// Vampire.find({victims: {$exists: false}}, (err, foundVampire) => {
+//     if(err){
+//         console.log(err);
+//     } else {
+//      console.log(foundVampire);
+//     }
+// });
+
+// Vampire.find({$and:[{title:{$exists:true}}, {victims:{$exists:false}}]}, (err, foundVampire) => {
+//     if(err){
+//         console.log(err);
+//     } else {
+//      console.log(foundVampire);
+//     }
+// });
+
+
+Vampire.find({$and:[{victims:{$exists:true}}, {victims:{$gt:1000}}]}, (err, foundVampire) => {
     if(err){
         console.log(err);
     } else {
      console.log(foundVampire);
     }
 });
-
-
-/////////////////////////////////////////////////
-// ### Select by exists or does not exist
-
-
 
 /////////////////////////////////////////////////
 // ### Select with OR
